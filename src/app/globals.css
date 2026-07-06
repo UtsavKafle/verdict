@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-cream: #f4ede2;
+  --color-ink: #1a1815;
+  --color-body-ink: #33302b;
+  --color-muted-1: #6b665e;
+  --color-muted-2: #857f75;
+  --color-muted-3: #a89e8d;
+  --color-tan-chip-bg: #eadfce;
+  --color-tan-chip-text: #6b4a1e;
+  --color-sheet-grabber: #cabfaa;
+  --color-sheet-border: #e0d5c1;
+
+  /* Equal lightness + chroma, hue only differs — neither side may read as "correct".
+     (Spec listed 0.55/0.13 for plum and 0.6/0.12 for teal, which aren't equal;
+     averaged to 0.575/0.125 to satisfy the explicit "equal L and C" requirement.) */
+  --color-plum: oklch(0.575 0.125 320);
+  --color-teal: oklch(0.575 0.125 175);
+
+  --color-poster-avatar: oklch(0.6 0.1 200);
+  --color-comment-nta: oklch(0.55 0.13 265);
+  --color-comment-yta: oklch(0.62 0.14 45);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-cream: var(--color-cream);
+  --color-ink: var(--color-ink);
+  --color-body-ink: var(--color-body-ink);
+  --color-muted-1: var(--color-muted-1);
+  --color-muted-2: var(--color-muted-2);
+  --color-muted-3: var(--color-muted-3);
+  --color-tan-chip-bg: var(--color-tan-chip-bg);
+  --color-tan-chip-text: var(--color-tan-chip-text);
+  --color-sheet-grabber: var(--color-sheet-grabber);
+  --color-sheet-border: var(--color-sheet-border);
+  --color-plum: var(--color-plum);
+  --color-teal: var(--color-teal);
+  --color-poster-avatar: var(--color-poster-avatar);
+  --color-comment-nta: var(--color-comment-nta);
+  --color-comment-yta: var(--color-comment-yta);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-archivo-black);
+  --font-body: var(--font-archivo);
+  --font-meta: var(--font-space-mono);
+
+  --radius-vote: 28px;
+  --radius-card: 42px;
+  --radius-pill: 21px;
+  --radius-sheet: 32px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-body-ink);
+}
+
+@keyframes jelly {
+  0% {
+    transform: scale(0.85, 1.1);
+  }
+  40% {
+    transform: scale(1.06, 0.94);
+  }
+  70% {
+    transform: scale(0.98, 1.02);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sheetUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-jelly {
+  animation: jelly 0.6s;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+.animate-sheet-up {
+  animation: sheetUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.vote-btn-spring {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-jelly,
+  .animate-fade-in,
+  .animate-sheet-up {
+    animation: none !important;
+  }
+  .vote-btn-spring {
+    transition: none !important;
+  }
 }
