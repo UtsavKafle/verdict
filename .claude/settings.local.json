@@ -24,7 +24,22 @@
       "Bash(curl -s 'https://uxyinzippjviqpftpyir.supabase.co/rest/v1/profiles?select=handle,age_band,gender,is_anonymous&id=eq.91073173-317a-4c4a-8918-fd49fe2faa1f' -H 'apikey: sb_publishable_51_CooUNHNbshvX51TTmsQ_O6N2w4jc' -H 'Authorization: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6ImE2MzU0ZDk4LTliNTQtNDNmYi1hOTZhLTY2YTliODhhZTBjNSIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3V4eWluemlwcGp2aXFwZnRweWlyLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI5MTA3MzE3My0zMTdhLTRjNGEtODkxOC1mZDQ5ZmUyZmFhMWYiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzgzMzQzNjk3LCJpYXQiOjE3ODMzNDAwOTcsImVtYWlsIjoiIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnt9LCJ1c2VyX21ldGFkYXRhIjp7fSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJhbm9ueW1vdXMiLCJ0aW1lc3RhbXAiOjE3ODMzNDAwOTd9XSwic2Vzc2lvbl9pZCI6IjBhYzg4MjZjLTA3NWYtNDRkMi1hNWM5LTZjMmNjMDk4YmRlMiIsImlzX2Fub255bW91cyI6dHJ1ZX0.uK6LE1-kPfDO24ZF1DAgNt4V8ceNgVmi4U-G1igK2AT6mUFocQsNcfR6565KqkHch-b74XLG-GDI4xSQEGC-Qg')",
       "Bash(echo \"=== casecloser profile ===\")",
       "Bash(curl -s 'https://uxyinzippjviqpftpyir.supabase.co/rest/v1/profiles?select=handle,age_band,gender,is_anonymous&id=eq.91073173-317a-4c4a-8918-fd49fe2faa1f' -H 'apikey: sb_publishable_51_CooUNHNbshvX51TTmsQ_O6N2w4jc' -H 'Authorization: Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6ImE2MzU0ZDk4LTliNTQtNDNmYi1hOTZhLTY2YTliODhhZTBjNSIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3V4eWluemlwcGp2aXFwZnRweWlyLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiI5MTA3MzE3My0zMTdhLTRjNGEtODkxOC1mZDQ5ZmUyZmFhMWYiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzgzMzU5MTc5LCJpYXQiOjE3ODMzNTU1NzksImVtYWlsIjoiIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnt9LCJ1c2VyX21ldGFkYXRhIjp7fSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJhbm9ueW1vdXMiLCJ0aW1lc3RhbXAiOjE3ODMzNDAwOTd9XSwic2Vzc2lvbl9pZCI6IjBhYzg4MjZjLTA3NWYtNDRkMi1hNWM5LTZjMmNjMDk4YmRlMiIsImlzX2Fub255bW91cyI6dHJ1ZX0.bE_YltjkkFFqpCj_jXtArC1mVXTTWh3r9lPY2Mf1UfBIIYQyHaLrklOfVDU2Cr0QtlU4LKVD3_M56m1i87rS7Q')",
-      "Bash(echo \"\")"
+      "Bash(echo \"\")",
+      "Bash(curl -s -i http://localhost:3000/manifest.webmanifest)",
+      "Bash(curl -s -i http://localhost:3000/sw.js)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{content_type}\\\\n\" http://localhost:3000/icon.svg)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{content_type}\\\\n\" http://localhost:3000/apple-icon)",
+      "Bash(node --check scripts/seed.mjs)",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('scripts/dilemmas.json','utf8'\\)\\); console.log\\('dilemmas.json: valid JSON'\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(kill 31568)",
+      "Bash(lsof -i :3000 -sTCP:LISTEN)",
+      "Bash(kill 33119)",
+      "Bash(curl -s \"http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__0ysdvof._.css\" -o /tmp/verdict-compiled.css)",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__0ysdvof._.css\")",
+      "Bash(curl -s \"http://localhost:3000/d/dcc19a07-8f99-4720-9a4a-30a5fedd285c\" -H \"Cookie: $\\(echo\\)\")",
+      "Bash(curl -s \"http://localhost:3000/d/dcc19a07-8f99-4720-9a4a-30a5fedd285c\")"
     ]
   }
 }

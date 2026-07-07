@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
-import { DilemmaCard } from '@/components/dilemma-card';
-import { loadDilemmaCardData } from '@/lib/dilemma-data';
+import { Feed } from '@/components/feed';
+import { loadFeedFromDilemma } from '@/lib/dilemma-data';
 
 export default async function DilemmaPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -17,9 +17,9 @@ export default async function DilemmaPage({ params }: { params: Promise<{ id: st
     );
   }
 
-  const data = await loadDilemmaCardData(supabase, user.id, id);
+  const items = await loadFeedFromDilemma(supabase, user.id, id);
 
-  if (!data) {
+  if (items.length === 0) {
     return (
       <div className="flex min-h-full items-center justify-center p-6 text-center font-meta text-sm text-muted-2">
         Case not found.
@@ -27,5 +27,7 @@ export default async function DilemmaPage({ params }: { params: Promise<{ id: st
     );
   }
 
-  return <DilemmaCard {...data} />;
+  // Opens on the requested case, then continues into the rest of the feed so
+  // there's no dead end (e.g. right after posting your own case).
+  return <Feed items={items} persist={false} />;
 }

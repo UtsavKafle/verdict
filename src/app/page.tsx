@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
-import { DilemmaCard } from '@/components/dilemma-card';
-import { pickNextDilemmaId, loadDilemmaCardData } from '@/lib/dilemma-data';
+import { Feed } from '@/components/feed';
+import { loadFeedDilemmas } from '@/lib/dilemma-data';
 
 const PLACEHOLDER_DILEMMAS = [
   {
@@ -46,9 +46,9 @@ export default async function Home() {
     );
   }
 
-  const dilemmaId = await pickNextDilemmaId(supabase, user.id);
+  const items = await loadFeedDilemmas(supabase, user.id);
 
-  if (!dilemmaId) {
+  if (items.length === 0) {
     return (
       <div className="flex min-h-full items-center justify-center p-6 text-center font-meta text-sm text-muted-2">
         No cases live right now. Check back soon.
@@ -56,14 +56,5 @@ export default async function Home() {
     );
   }
 
-  const data = await loadDilemmaCardData(supabase, user.id, dilemmaId);
-  if (!data) {
-    return (
-      <div className="flex min-h-full items-center justify-center p-6 text-center font-meta text-sm text-muted-2">
-        No cases live right now. Check back soon.
-      </div>
-    );
-  }
-
-  return <DilemmaCard {...data} />;
+  return <Feed items={items} />;
 }
