@@ -14,6 +14,20 @@ export function Feed({ items, persist = true }: { items: DilemmaCardData[]; pers
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const [openSheets, setOpenSheets] = useState(0);
 
+  // The reels feed is the one true full-screen surface — the app-shell itself
+  // must never scroll while it's mounted, or you get the shell's own scrollbar
+  // fighting this container's snap scroll (the "double scroll" that breaks the
+  // clean one-card-at-a-time feel). Same toggle pattern CommentsSheet already
+  // uses for the same element, restoring whatever was there before on unmount.
+  useEffect(() => {
+    const shell = document.getElementById('app-shell');
+    const prevOverflow = shell?.style.overflow;
+    if (shell) shell.style.overflow = 'hidden';
+    return () => {
+      if (shell) shell.style.overflow = prevOverflow ?? '';
+    };
+  }, []);
+
   // Home feed restores the last-viewed case; the /d/[id] feed (persist=false)
   // always opens on the first card — override the browser/router trying to keep
   // a scroll position carried over from the previous page (e.g. after posting).
@@ -58,7 +72,7 @@ export function Feed({ items, persist = true }: { items: DilemmaCardData[]; pers
     <>
       <div
         ref={scrollRef}
-        className="scrollbar-hide h-full snap-y snap-mandatory overflow-y-scroll"
+        className="scrollbar-hide h-full snap-y snap-mandatory overflow-y-scroll overscroll-y-contain"
       >
         {items.map((item, i) => (
           <section
@@ -66,7 +80,12 @@ export function Feed({ items, persist = true }: { items: DilemmaCardData[]; pers
             ref={(el) => {
               sectionRefs.current[i] = el;
             }}
-            className="flex min-h-full flex-col snap-start"
+            className="h-full snap-start"
+            // scrollSnapStop isn't a class Tailwind reliably compiles here,
+            // and a fast flick must land on the very next card, never skip
+            // past it into a partial view of a third — inline style guarantees
+            // the rule always applies regardless of build-time quirks.
+            style={{ scrollSnapStop: 'always' }}
           >
             <DilemmaCard
               {...item}

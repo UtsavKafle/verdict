@@ -56,7 +56,20 @@ export default function RootLayout({
       lang="en"
       className={`${archivoBlack.variable} ${archivo.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <body className="min-h-dvh bg-ink font-body flex flex-col">
+      {/* Fixed height (not min-height) + overflow-hidden makes body a fixed,
+          non-scrolling frame — the dynamic viewport unit accounts for mobile
+          browser chrome (address bar), and capping+clipping here is what stops
+          the page itself from ever double-scrolling alongside an inner scroll
+          container. Set via inline style, not the h-dvh utility class — that
+          class wasn't reliably compiling in this dev environment and silently
+          left body unbounded, which is exactly what caused the next reel to
+          peek in below the first (this same "Tailwind utility silently doesn't
+          apply" failure mode showed up earlier for h-20/w-20/object-cover too;
+          inline style sidesteps it entirely for anything load-bearing). */}
+      <body
+        className="overflow-hidden bg-ink font-body flex flex-col"
+        style={{ height: '100dvh' }}
+      >
         <AuthBootstrap />
         <ServiceWorkerRegistrar />
         <div

@@ -39,7 +39,29 @@
       "Read(//tmp/**)",
       "Bash(curl -s \"http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__0ysdvof._.css\")",
       "Bash(curl -s \"http://localhost:3000/d/dcc19a07-8f99-4720-9a4a-30a5fedd285c\" -H \"Cookie: $\\(echo\\)\")",
-      "Bash(curl -s \"http://localhost:3000/d/dcc19a07-8f99-4720-9a4a-30a5fedd285c\")"
+      "Bash(curl -s \"http://localhost:3000/d/dcc19a07-8f99-4720-9a4a-30a5fedd285c\")",
+      "mcp__3de70704-487c-40e1-bf36-5aeead237271__list_projects",
+      "mcp__3de70704-487c-40e1-bf36-5aeead237271__deploy_to_vercel",
+      "Bash(vercel --version)",
+      "Bash(vercel whoami *)",
+      "Bash(npx --yes vercel whoami)",
+      "Bash(pkill -f \"npx --yes vercel\")",
+      "Bash(npx --yes vercel login)",
+      "Bash(npx --yes vercel link --yes --project verdict --scope utsav-kafles-projects)",
+      "Bash(npx --yes vercel deploy --prod --yes)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://verdict-olive-five.vercel.app/)",
+      "Bash(curl -s https://verdict-olive-five.vercel.app/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://verdict-olive-five.vercel.app/manifest.webmanifest)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://verdict-olive-five.vercel.app/search)",
+      "Bash(kill 35949)",
+      "mcp__3de70704-487c-40e1-bf36-5aeead237271__get_deployment",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://verdict-fx0edx5eo-utsav-kafles-projects.vercel.app/)",
+      "mcp__3de70704-487c-40e1-bf36-5aeead237271__get_deployment_build_logs",
+      "Bash(npx --yes vercel inspect verdict-fx0edx5eo-utsav-kafles-projects.vercel.app)",
+      "mcp__3de70704-487c-40e1-bf36-5aeead237271__list_deployments",
+      "mcp__3de70704-487c-40e1-bf36-5aeead237271__get_project",
+      "Bash(kill 43571)",
+      "Bash(kill 43569)"
     ]
   }
 }
